@@ -1,0 +1,40 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border: 1px solid #000000;
+  min-width: 17%;
+  min-height: 105px;
+  border-radius: 5px;
+  padding: 30px 15px;
+  background-color: #e9ddc7;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.newCard {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: white;
+  border: 1px solid #999999;
+  border-radius: 5px;
+}
+
+.button {
+  padding: 10px;
+  font-size: 1.4rem;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid gray;
+  background-color: #548dc2;
+}
+
+.deleteButton {
+  background-color: #b13333 !important;
+}
