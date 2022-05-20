@@ -1,4 +1,5 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
+import { localStorageKey } from "../constants";
 import * as actions from "./actions";
 import { AppState, reducer, ICard, IColumn } from "./reducer";
 
@@ -40,8 +41,36 @@ const initialState: AppState = {
   selectedCard: undefined,
 };
 
+const getInitialState: () => AppState = () => {
+  const persistedState = localStorage.getItem(localStorageKey);
+  if (persistedState !== null) {
+    const parsed = JSON.parse(persistedState) as {
+      columns: AppState["columns"];
+      cards: { [key: string]: ICard };
+      selectedCard?: string;
+    };
+
+    const cardMap = new Map(
+      Object.entries(parsed.cards).map(([id, card]) => [id, card])
+    );
+    return {
+      columns: parsed.columns,
+      cards: cardMap,
+      sleetedCard: parsed.selectedCard,
+    };
+  }
+  return initialState;
+};
+
 const AppContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, getInitialState());
+
+  useEffect(() => {
+    localStorage.setItem(
+      localStorageKey,
+      JSON.stringify({ ...state, cards: Object.fromEntries(state.cards) })
+    );
+  }, [state]);
 
   const value: ContextType = useMemo(
     () => ({
