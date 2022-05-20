@@ -1,0 +1,32 @@
+.button {
+  background-color: #077100;
+  color: white;
+  padding: 10px;
+  font-size: 1.4rem;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid gray;
+  transition: all 0.3s;
+}
+
+.button:disabled {
+  background-color: #909ca7;
+  color: rgb(0, 0, 0);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid #000000;
+  min-width: 17%;
+  min-height: 190px;
+  border-radius: 5px;
+  padding: 10px 15px;
+  background-color: #e9ddc7;
+}
+
+.input {
+  outline: 1px solid gray;
+  background-color: white !important;
+}
