@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  min-height: 100%;
+  overflow-x: auto;
+}
